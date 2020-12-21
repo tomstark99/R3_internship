@@ -1,5 +1,6 @@
 class Game(state: Array<Array<Player>> = Array(3) { Array(3) {Player.N} }) {
 
+    // public
     var grid: Array<Array<Player>>
 
     enum class Player(var player: String) {
