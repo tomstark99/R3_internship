@@ -15,7 +15,7 @@ class CheckGameTest {
 
         classUnderTest.grid.forEachIndexed { i, arrayOfPlayers ->
             arrayOfPlayers.forEachIndexed { j, _ ->
-                assertEquals(classUnderTest.grid[i][j], expected[i][j])
+                assertEquals(expected[i][j], classUnderTest.grid[i][j])
             }
         }
 
@@ -27,7 +27,7 @@ class CheckGameTest {
 
         classUnderTest.grid.forEachIndexed { i, arrayOfPlayers ->
             arrayOfPlayers.forEachIndexed { j, _ ->
-                assertNotEquals(classUnderTest.grid[i][j], expected[i][j])
+                assertNotEquals(expected[i][j], classUnderTest.grid[i][j])
             }
         }
     }
@@ -40,13 +40,13 @@ class CheckGameTest {
         )
         val classUnderTest = CheckGame(default)
 
-        assertEquals(classUnderTest.checkLine(Player.X, Player.X, Player.X), Player.X)
-        assertEquals(classUnderTest.checkLine(Player.O, Player.O, Player.O), Player.O)
-        assertEquals(classUnderTest.checkLine(Player.X, Player.O, Player.O), Player.N)
-        assertEquals(classUnderTest.checkLine(Player.O, Player.X, Player.O), Player.N)
-        assertEquals(classUnderTest.checkLine(Player.O, Player.O, Player.X), Player.N)
-        assertEquals(classUnderTest.checkLine(Player.N, Player.N, Player.N), Player.N)
-        assertEquals(classUnderTest.checkLine(Player.X, Player.N, Player.N), Player.N)
+        assertEquals(Player.X, classUnderTest.checkLine(Player.X, Player.X, Player.X))
+        assertEquals(Player.O, classUnderTest.checkLine(Player.O, Player.O, Player.O))
+        assertEquals(Player.N, classUnderTest.checkLine(Player.X, Player.O, Player.O))
+        assertEquals(Player.N, classUnderTest.checkLine(Player.O, Player.X, Player.O))
+        assertEquals(Player.N, classUnderTest.checkLine(Player.O, Player.O, Player.X))
+        assertEquals(Player.N, classUnderTest.checkLine(Player.N, Player.N, Player.N))
+        assertEquals(Player.N, classUnderTest.checkLine(Player.X, Player.N, Player.N))
     }
 
     @Test fun testWin() {
@@ -83,14 +83,14 @@ class CheckGameTest {
             arrayOf(Player.N, Player.O, Player.X),
             arrayOf(Player.O, Player.N, Player.N))
 
-        assertEquals(CheckGame(state1).checkForWin(), Result.WIN_X)
-        assertEquals(CheckGame(state2).checkForWin(), Result.WIN_X)
-        assertEquals(CheckGame(state3).checkForWin(), Result.WIN_X)
-        assertEquals(CheckGame(state4).checkForWin(), Result.WIN_O)
-        assertEquals(CheckGame(state5).checkForWin(), Result.WIN_O)
-        assertEquals(CheckGame(state6).checkForWin(), Result.WIN_O)
-        assertEquals(CheckGame(state7).checkForWin(), Result.WIN_X)
-        assertEquals(CheckGame(state8).checkForWin(), Result.WIN_O)
+        assertEquals(Result.WIN_X, CheckGame(state1).checkForWin())
+        assertEquals(Result.WIN_X, CheckGame(state2).checkForWin())
+        assertEquals(Result.WIN_X, CheckGame(state3).checkForWin())
+        assertEquals(Result.WIN_O, CheckGame(state4).checkForWin())
+        assertEquals(Result.WIN_O, CheckGame(state5).checkForWin())
+        assertEquals(Result.WIN_O, CheckGame(state6).checkForWin())
+        assertEquals(Result.WIN_X, CheckGame(state7).checkForWin())
+        assertEquals(Result.WIN_O, CheckGame(state8).checkForWin())
     }
 
     @Test fun testNoWin() {
@@ -111,9 +111,9 @@ class CheckGameTest {
             arrayOf(Player.X, Player.O, Player.O),
             arrayOf(Player.O, Player.X, Player.X))
 
-        assertEquals(CheckGame(state1).checkForWin(), Result.NEXT)
-        assertEquals(CheckGame(state2).checkForWin(), Result.NEXT)
-        assertEquals(CheckGame(state3).checkForWin(), Result.NEXT)
-        assertEquals(CheckGame(state4).checkForWin(), Result.NEXT)
+        assertEquals(Result.NEXT, CheckGame(state1).checkForWin())
+        assertEquals(Result.NEXT, CheckGame(state2).checkForWin())
+        assertEquals(Result.NEXT, CheckGame(state3).checkForWin())
+        assertEquals(Result.NEXT, CheckGame(state4).checkForWin())
     }
 }

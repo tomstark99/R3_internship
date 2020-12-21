@@ -9,9 +9,10 @@ class Game(state: Array<Array<Player>> = Array(3) { Array(3) {Player.N} }) {
     }
 
     init {
+        check(state.size == 3)
+        state.forEach { check(it.size == 3) }
         grid = state
     }
-
 
     fun newGame(newState: Array<Array<Player>>) {
         grid = newState

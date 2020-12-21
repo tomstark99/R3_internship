@@ -8,6 +8,11 @@ class CheckGame(private var grid: Array<Array<Player>>) {
         NEXT(Player.N,"The outcome of the game is yet to be decided")
     }
 
+    init {
+        check(grid.size == 3)
+        grid.forEach { check(it.size == 3) }
+    }
+
     fun checkLine(p0: Player, p1: Player, p2: Player) : Player {
         return if (p0 == Player.X && p1 == Player.X && p2 == Player.X) Player.X
         else if (p0 == Player.O && p1 == Player.O && p2 == Player.O) Player.O
@@ -40,13 +45,13 @@ class CheckGame(private var grid: Array<Array<Player>>) {
 }
 
 fun main(args: Array<String>) {
-    var game = Game(arrayOf(
+    val game = Game(arrayOf(
         arrayOf(Player.N, Player.O, Player.O),
         arrayOf(Player.X, Player.X, Player.X),
-        arrayOf(Player.N, Player.O, Player.O)))
-
-    var result = CheckGame(game.grid).checkForWin()
-    println(result.result)
+        arrayOf(Player.X, Player.O, Player.O)))
 
     game.printGameState()
+
+    val result = CheckGame(game.grid).checkForWin()
+    println(result.result)
 }
