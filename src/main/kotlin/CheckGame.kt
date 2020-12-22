@@ -1,6 +1,6 @@
 import Game.*
 
-class CheckGame(private var grid: Array<Array<Player>>) {
+class CheckGame(private val grid: Array<Array<Player>>) {
 
     enum class Result(val id: Player, val result: String) {
         WIN_X(Player.X,"The player placing \"crosses\" (X) has won"),
@@ -45,13 +45,30 @@ class CheckGame(private var grid: Array<Array<Player>>) {
 }
 
 fun main(args: Array<String>) {
-    val game = Game(arrayOf(
-        arrayOf(Player.N, Player.O, Player.O),
-        arrayOf(Player.X, Player.X, Player.X),
-        arrayOf(Player.X, Player.O, Player.O)))
+    val game = Game()
 
     game.printGameState()
 
-    val result = CheckGame(game.grid).checkForWin()
+    var result = CheckGame(game.grid).checkForWin()
+    println(result.result)
+
+    game.newGame(arrayOf(
+        arrayOf(Player.N, Player.O, Player.O),
+        arrayOf(Player.X, Player.X, Player.X),
+        arrayOf(Player.X, Player.N, Player.O)))
+
+    game.printGameState()
+
+    result = CheckGame(game.grid).checkForWin()
+    println(result.result)
+
+    game.newGame(arrayOf(
+        arrayOf(Player.N, Player.O, Player.O),
+        arrayOf(Player.X, Player.O, Player.X),
+        arrayOf(Player.X, Player.O, Player.N)))
+
+    game.printGameState()
+
+    result = CheckGame(game.grid).checkForWin()
     println(result.result)
 }

@@ -58,6 +58,9 @@ test{
     }
 }
 
+apply plugin: 'application'
+mainClassName = "CheckGameKt"
+
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }

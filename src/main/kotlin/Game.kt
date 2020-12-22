@@ -1,7 +1,4 @@
-class Game(state: Array<Array<Player>> = Array(3) { Array(3) {Player.N} }) {
-
-    // public
-    var grid: Array<Array<Player>>
+class Game(var grid: Array<Array<Player>> = Array(3) { Array(3) {Player.N} }) {
 
     enum class Player(var player: String) {
         X("X"),
@@ -10,12 +7,14 @@ class Game(state: Array<Array<Player>> = Array(3) { Array(3) {Player.N} }) {
     }
 
     init {
-        check(state.size == 3)
-        state.forEach { check(it.size == 3) }
-        grid = state
+        check(grid.size == 3)
+        grid.forEach { check(it.size == 3) }
     }
 
     fun newGame(newState: Array<Array<Player>>) {
+        check(newState.size == 3)
+        newState.forEach { check(it.size == 3) }
+
         grid = newState
     }
 
