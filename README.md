@@ -1,6 +1,6 @@
 # R3_internship: Coding challenge
 
-Naughts and Crosses checker. Given a game state of naughts and crosses find the outcome of the game state from 3 possible outcomes
+Noughts and Crosses checker. Given a game state of noughts and crosses find the outcome of the game state from 3 possible outcomes
 
 - The player placing "crosses" (X) has won
 - The player placing "noughts" (O) has won
@@ -8,7 +8,7 @@ Naughts and Crosses checker. Given a game state of naughts and crosses find the 
 
 ## My solution
 
-I decided to build my solution with `Kotlin` due to my existing knowledge with the language and the relevance to the **Corda** platform developed by R3
+I decided to build my solution with `Kotlin` due to my existing knowledge with the language and its relevance to the **Corda** platform developed by R3
 
 ### Representing the game state
 
@@ -28,7 +28,7 @@ I have three possible players that are displayed on the grid
 
 These are represented by a Kotlin `enum class` called `Player` with a string representation so the grid can be displayed in the console
 
-Since Kotlin does not make use of multi-dimensional arrays the same way Java does. I used a `Array<Array<Player>>` to represent the grid for the game state.
+Since Kotlin does not make use of multi-dimensional arrays the same way as Java. I used a `Array<Array<Player>>` to represent the grid for the game state.
 
 The `Game` class also has a function to update the current game state with a new one
 
@@ -41,7 +41,7 @@ fun newGame(newState: Array<Array<Player>>) {
 }
 ```
 
-To make sure an array of the correct size required for naughts and crosses is given I have included a check to make sure the state fulfils these requirements.
+To make sure an array of the correct size required for noughts and crosses is given I have included a check to ensure the state fulfils these requirements.
 
 The `Game` class also includes a function to print the current grid, here is a sample output
 
@@ -69,7 +69,7 @@ I included a separate function (which was kept public in order to test it) calle
 checkLine(grid[0][0], grid[1][1], grid[2][2])
 ```
 
-would check the diagonal line starting from the top left. If all of these values were of `Player.X` then `Player.X` would be returned as a winning player for that line.
+This would check the diagonal line starting from the top left. If all of these values were of `Player.X` then `Player.X` would be returned as a winning player for that line.
 
 If `checkLine` finds a winning line, `checkForWin` returns a win condition defined by another `enum class` in `CheckGame` called `Result`. The possible results are
 
@@ -87,7 +87,8 @@ Then if you indexed the map with `Player.N` for example it would return the resu
 
 ### Usage example
 
-First we want to create a game
+Creating a game state can be done as follows
+
 ```lang-kotlin
 val game = Game()
 ```
@@ -120,28 +121,22 @@ The player placing "crosses" (X) has won
 
 ## Build and run
 
-This project runs with Gradle so please make sure you have `gradle` installed in order to run.
+This project runs with **Gradle** so please make sure you have `gradle` installed in order to run.
 
 use
 
 ```
 gradle clean build
 ```
-or
-```
-./gradlew clean build
-```
-(which uses the included bat file) to build the project. (Note. the testing outcomes may be shown when building)
+
+Note: the testing outcomes may be shown when building
 
 My main function shows off how my classes work by creating examples of different grid states and their game outcomes.
 
 You can run the main function by using 
+
 ```
 gradle clean run
-```
-or
-```
-./gradlew clean run
 ```
 
 This should print 3 possible game states in the console along with their results
@@ -171,10 +166,6 @@ use
 
 ```
 gradle clean test
-```
-or
-```
-./gradlew clean test
 ```
 
 to perform the tests, the testing output should inform you what tests have been passed, skipped or failed. The output will appear in the console and should look something like this
