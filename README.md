@@ -1,4 +1,4 @@
-# R3_internship: Coding challenge
+# R3 internship: Coding challenge
 
 Noughts and Crosses checker. Given a game state of noughts and crosses find the outcome of the game state from 3 possible outcomes
 
